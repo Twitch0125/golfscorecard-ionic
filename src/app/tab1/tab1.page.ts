@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { GolfCourseService } from '../api/golf-course.service';
 
 @Component({
@@ -6,8 +7,11 @@ import { GolfCourseService } from '../api/golf-course.service';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   constructor(private coursesService: GolfCourseService) {}
 
   courses = this.coursesService.getCourses();
+  ngOnInit() {
+    this.courses.subscribe(res => console.log(res.response));
+  }
 }
