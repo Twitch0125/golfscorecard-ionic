@@ -16,7 +16,7 @@ export class Tab1Page implements OnInit {
 
   courses = this.courseService.getCourses();
   ngOnInit() {
-    this.courses.subscribe(res => console.log(res.response));
+    // this.courses.subscribe(res => console.log(res.response));
   }
 
   handleClick(id: number) {
