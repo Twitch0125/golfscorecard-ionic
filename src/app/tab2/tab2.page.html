@@ -11,7 +11,9 @@
     <h1>Amount of Players</h1>
   </ion-text>
   <ion-range
+    required="true"
     [(ngModel)]="value"
+    min="1"
     max="4"
     snaps="true"
     pin="true"
