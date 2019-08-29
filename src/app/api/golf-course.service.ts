@@ -9,13 +9,21 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GolfCourseService {
+  private selectedCourse: Course;
   constructor() {}
   API_URL = 'https://golf-courses-api.herokuapp.com';
+
+  getSelectedCourse(): Course {
+    return this.selectedCourse;
+  }
 
   getCourses(): Observable<AjaxResponse> {
     return ajax(`${this.API_URL}/courses`);
   }
   getCourseById(id: number): Observable<AjaxResponse> {
     return ajax(`${this.API_URL}/courses/${id}`);
+  }
+  setSelectedCourse(course: Course) {
+    this.selectedCourse = course;
   }
 }

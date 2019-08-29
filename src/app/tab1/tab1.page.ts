@@ -10,16 +10,24 @@ import { NavController } from '@ionic/angular';
 })
 export class Tab1Page implements OnInit {
   constructor(
-    private coursesService: GolfCourseService,
-    private navCtrl: NavController
+    private courseService: GolfCourseService,
+    public navCtrl: NavController
   ) {}
 
-  courses = this.coursesService.getCourses();
+  courses = this.courseService.getCourses();
   ngOnInit() {
     this.courses.subscribe(res => console.log(res.response));
   }
 
-  handleClick() {
-    this.navCtrl.navigateForward('tabs/tab2');
+  handleClick(id: number) {
+    this.courseService
+      .getCourseById(id)
+      .subscribe(res => {
+        this.courseService.setSelectedCourse(res.response.data);
+        console.log(this.courseService.getSelectedCourse());
+      })
+      .unsubscribe();
+
+    this.navCtrl.navigateForward('');
   }
 }

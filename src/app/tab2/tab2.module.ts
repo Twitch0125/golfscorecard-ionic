@@ -1,8 +1,8 @@
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Tab2Page } from './tab2.page';
 
 @NgModule({
@@ -10,7 +10,7 @@ import { Tab2Page } from './tab2.page';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab2Page }])
+    RouterModule.forChild([{ path: '/players', component: Tab2Page }])
   ],
   declarations: [Tab2Page]
 })

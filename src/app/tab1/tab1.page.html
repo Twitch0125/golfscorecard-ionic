@@ -11,7 +11,7 @@
     color="Primary"
     button="true"
     *ngFor="let course of (courses | async).response.courses"
-    (click)="handleClick()"
+    (click)="handleClick(course.id)"
   >
     <ion-card-header>
       <ion-card-title>{{ course.name }}</ion-card-title>
