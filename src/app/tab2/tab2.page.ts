@@ -6,7 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
+  players = [];
+  value: number;
   constructor() {}
 
+  handleIonRangeChange() {
+    console.log('range change', this.value);
+    this.players.length = this.value;
+    console.log(this.players);
+  }
+  handleIonInputChange() {}
 }

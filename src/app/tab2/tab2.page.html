@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
+    <ion-title color="tertiary">
+      Players
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-text color="primary">
+    <h1>Amount of Players</h1>
+  </ion-text>
+  <ion-range
+    [(ngModel)]="value"
+    max="4"
+    snaps="true"
+    pin="true"
+    color="secondary"
+    (ionChange)="handleIonRangeChange()"
+  ></ion-range>
+  <ion-text *ngFor="let player of players">
+    <ion-input placeholder="Player Name..."></ion-input>
+  </ion-text>
+</ion-content>
