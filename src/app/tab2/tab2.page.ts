@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab2Page implements OnInit {
   players = [];
-  value: 1;
+  playerCount: number;
+  currentPlayer: string;
   constructor() {}
 
   ngOnInit(): void {
@@ -16,9 +17,11 @@ export class Tab2Page implements OnInit {
   }
 
   handleIonRangeChange() {
-    console.log('range change', this.value);
-    this.players.length = this.value;
+    console.log('range change', this.playerCount);
+    this.players.length = this.playerCount;
     console.log(this.players);
   }
-  handleIonInputChange() {}
+  handleIonInputChange() {
+    console.log('currentPlayer', this.currentPlayer);
+  }
 }
