@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Courses } from '../types/courses';
 import { GolfCourseService } from '../api/golf-course.service';
 import { NavController } from '@ionic/angular';
 
@@ -9,14 +10,17 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
+  courses: Courses[];
   constructor(
     private courseService: GolfCourseService,
     public navCtrl: NavController
   ) {}
 
-  courses = this.courseService.getCourses();
   ngOnInit() {
-    // this.courses.subscribe(res => console.log(res.response));
+    this.courseService.getCourses().subscribe(res => {
+      this.courses = res.response.courses;
+    });
+    console.log();
   }
 
   handleClick(id: number) {
