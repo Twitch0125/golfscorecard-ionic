@@ -27,7 +27,6 @@ export class Tab1Page implements OnInit {
       this.courses = res.response.courses;
       loading.dismiss();
     });
-    console.log();
   }
 
   handleClick(id: number) {
