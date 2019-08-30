@@ -18,7 +18,7 @@
 
   <ion-item *ngFor="let player of this.playersService.getPlayers()">
     <ion-input>{{ player.name }}</ion-input>
-    <ion-button>
+    <ion-button (click)="removePlayer()">
       <ion-icon name="remove"></ion-icon>
     </ion-button>
   </ion-item>

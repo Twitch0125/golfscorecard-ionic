@@ -22,4 +22,7 @@ export class Tab2Page implements OnInit {
     this.playersService.addPlayer({ name: this.currentPlayer });
     console.log(this.playersService.getPlayers());
   }
+  removePlayer(name: string) {
+    this.playersService.removePlayer(name);
+  }
 }
