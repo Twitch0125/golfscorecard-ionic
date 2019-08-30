@@ -12,10 +12,13 @@ export class PlayersService {
   addPlayer(player: Player) {
     if (this.players.length <= 4 && player.name != undefined) {
       this.players.push(player);
+      console.log(this.getPlayers(), 'added player');
     }
   }
   removePlayer(name: string) {
-    this.players = this.players.filter(player => player.name != name);
+    console.log('removing player', name);
+
+    this.players = this.players.filter(player => player.name !== name);
     console.log(this.players, 'removed player');
   }
 
