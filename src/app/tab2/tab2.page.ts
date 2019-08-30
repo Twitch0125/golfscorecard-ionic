@@ -1,3 +1,5 @@
+import * as uuid from 'uuid/v1';
+
 import { Component, OnInit } from '@angular/core';
 
 import { Player } from '../types/player';
@@ -19,9 +21,13 @@ export class Tab2Page implements OnInit {
     //Add 'implements OnInit' to the class.
   }
   addPlayer() {
-    this.playersService.addPlayer({ name: this.currentPlayer });
+    this.playersService.addPlayer({ name: this.currentPlayer, id: uuid() });
   }
   removePlayer(name: string) {
     this.playersService.removePlayer(name);
+  }
+
+  updatePlayer(id: string, playerName: string) {
+    this.playersService.updatePlayer(id, playerName);
   }
 }

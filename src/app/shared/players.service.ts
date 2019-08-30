@@ -29,4 +29,19 @@ export class PlayersService {
   getPlayers(): Player[] {
     return this.players;
   }
+
+  updatePlayer(id: string, playerData: string) {
+    this.players.map(player => {
+      if (player.id === id) {
+        return (player.name = playerData);
+      }
+    });
+    console.log(
+      this.players,
+      'player with id: ',
+      id,
+      'name updated to: ',
+      playerData
+    );
+  }
 }
