@@ -9,18 +9,34 @@
 <ion-content>
   <ion-item>
     <ion-label>Tee Type</ion-label>
-    <ion-select>
-      <ion-select-option *ngFor="let hole of course.holes"> </ion-select-option>
+    <ion-select [(ngModel)]="teeType">
+      <ion-select-option
+        *ngFor="let type of this.course.holes[0].teeBoxes"
+        [value]="type.teeType"
+        >{{ type.teeType }}
+      </ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-grid>
     <ion-row>
       <ion-col>
-        test 1
+        Hole
+        <ion-row *ngFor="let hole of this.course.holes">
+          {{ hole.hole }}
+        </ion-row>
       </ion-col>
       <ion-col>
-        test 2
+        Yardage
+        <ion-row *ngFor="let hole of this.course.holes; index as i">
+          {{ hole.hole }}
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        Handicap
+      </ion-col>
+      <ion-col>
+        Par
       </ion-col>
     </ion-row>
   </ion-grid>

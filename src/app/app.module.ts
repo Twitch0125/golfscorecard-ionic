@@ -9,9 +9,10 @@ import { PlayersPipe } from './players.pipe';
 import { RouteReuseStrategy } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { TeeTypesPipe } from './tee-types.pipe';
 
 @NgModule({
-  declarations: [AppComponent, PlayersPipe, PlayerComponent],
+  declarations: [AppComponent, PlayersPipe, PlayerComponent, TeeTypesPipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
