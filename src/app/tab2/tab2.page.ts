@@ -1,6 +1,7 @@
 import * as uuid from 'uuid/v1';
 
 import { Component, OnInit } from '@angular/core';
+import { NavController, ToastController } from '@ionic/angular';
 
 import { Player } from '../types/player';
 import { PlayersService } from '../shared/players.service';
@@ -16,12 +17,13 @@ export class Tab2Page implements OnInit {
   currentPlayer: string;
   readOnly = true;
   fabActivated = false;
-  constructor(public playersService: PlayersService) {}
+  constructor(
+    public playersService: PlayersService,
+    public toastController: ToastController,
+    private navCtrl: NavController
+  ) {}
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-  }
+  ngOnInit(): void {}
   addPlayer() {
     this.playersService.addPlayer({ name: this.currentPlayer, id: uuid() });
   }
@@ -33,8 +35,20 @@ export class Tab2Page implements OnInit {
     this.playersService.updatePlayer(id, playerName);
   }
 
-  handleFabClick() {
+  async handleFabClick() {
     this.fabActivated = !this.fabActivated;
     this.readOnly = !this.readOnly;
+    const toast = await this.toastController.create({
+      message: this.fabActivated ? 'Editing Players' : 'Saved Players',
+      duration: 1000,
+      color: this.fabActivated ? 'primary' : 'success',
+      keyboardClose: this.fabActivated ? false : true,
+      position: 'middle'
+    });
+    toast.present();
+  }
+
+  handleScorecardClick() {
+    this.navCtrl.navigateForward('tabs/tab3');
   }
 }
