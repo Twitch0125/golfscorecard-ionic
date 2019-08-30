@@ -6,23 +6,12 @@
 
 <ion-content>
   <ion-text color="primary">
-    <h1>Amount of Players</h1>
+    <h1>Add Players</h1>
   </ion-text>
-  <ion-range
-    [(ngModel)]="playerCount"
-    min="0"
-    max="4"
-    snaps="true"
-    pin="true"
-    color="secondary"
-    (ionChange)="handleIonRangeChange()"
-  ></ion-range>
-  <ion-text *ngFor="let player of players">
-    <ion-input
-      [(ngModel)]="currentPlayer"
-      (ionChange)="handleIonInputChange(currentPlayer)"
-      color="tertiary"
-      placeholder="Player Name..."
-    ></ion-input>
-  </ion-text>
+  <ion-input
+    [(ngModel)]="currentPlayer"
+    (ionChange)="handleIonInputChange(currentPlayer)"
+    color="tertiary"
+    placeholder="Player Name..."
+  ></ion-input>
 </ion-content>

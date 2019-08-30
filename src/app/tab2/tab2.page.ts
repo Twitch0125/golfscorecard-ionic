@@ -15,12 +15,6 @@ export class Tab2Page implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
   }
-
-  handleIonRangeChange() {
-    console.log('range change', this.playerCount);
-    this.players.length = this.playerCount;
-    console.log(this.players);
-  }
   handleIonInputChange() {
     console.log('currentPlayer', this.currentPlayer);
   }
