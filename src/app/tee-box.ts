@@ -1,6 +1,8 @@
+import { TeeType } from './tee-type.enum';
+
 export interface TeeBox {
   teeTypeId: number;
-  teeType: string;
+  teeType: TeeType;
   par: number;
   yards: number;
   meters?: number;

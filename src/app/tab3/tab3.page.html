@@ -7,6 +7,13 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-label>Tee Type</ion-label>
+    <ion-select>
+      <ion-select-option *ngFor="let hole of course.holes"> </ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <ion-grid>
     <ion-row>
       <ion-col>
