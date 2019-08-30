@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color="tertiary"> Players </ion-title>
+    <ion-title color="tertiary"> Player List </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,10 +8,15 @@
   <ion-text color="primary">
     <h1>Add Players</h1>
   </ion-text>
-  <ion-input
-    [(ngModel)]="currentPlayer"
-    (ionChange)="handleIonInputChange(currentPlayer)"
-    color="tertiary"
-    placeholder="Player Name..."
-  ></ion-input>
+  <ion-item>
+    <ion-label position="floating">Player Name</ion-label>
+    <ion-input [(ngModel)]="currentPlayer" color="tertiary"></ion-input>
+  </ion-item>
+  <ion-button (click)="addPlayer()" expand="block">
+    <ion-text>Add Player</ion-text>
+  </ion-button>
+
+  <ion-item *ngFor="let player of this.playersService.getPlayers()">
+    {{ player.name }}
+  </ion-item>
 </ion-content>

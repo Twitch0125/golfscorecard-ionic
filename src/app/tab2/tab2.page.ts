@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Player } from '../types/player';
+import { PlayersService } from '../shared/players.service';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-  players = [];
+  players: Player[];
   playerCount: number;
   currentPlayer: string;
-  constructor() {}
+  constructor(public playersService: PlayersService) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
   }
-  handleIonInputChange() {
-    console.log('currentPlayer', this.currentPlayer);
+  addPlayer() {
+    this.playersService.addPlayer({ name: this.currentPlayer });
+    console.log(this.playersService.getPlayers());
   }
 }

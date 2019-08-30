@@ -5,9 +5,16 @@ import { Player } from '../types/player';
   providedIn: 'root'
 })
 export class PlayersService {
-  private players: Player[];
+  private players = [];
 
   constructor() {}
+
+  addPlayer(player: Player) {
+    if (!(this.players.length >= 4) && player.name != undefined) {
+      this.players.push(player);
+    }
+  }
+
   setPlayers(players: Player[]) {
     this.players = players;
   }
