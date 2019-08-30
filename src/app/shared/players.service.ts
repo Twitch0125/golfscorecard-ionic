@@ -10,7 +10,7 @@ export class PlayersService {
   constructor() {}
 
   addPlayer(player: Player) {
-    if (this.players.length <= 4 && player.name != undefined) {
+    if (this.players.length < 4 && player.name != undefined) {
       this.players.push(player);
       console.log(this.getPlayers(), 'added player');
     }

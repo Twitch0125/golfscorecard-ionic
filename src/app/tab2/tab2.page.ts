@@ -14,6 +14,8 @@ export class Tab2Page implements OnInit {
   players: Player[];
   playerCount: number;
   currentPlayer: string;
+  readOnly = true;
+  fabActivated = false;
   constructor(public playersService: PlayersService) {}
 
   ngOnInit(): void {
@@ -29,5 +31,10 @@ export class Tab2Page implements OnInit {
 
   updatePlayer(id: string, playerName: string) {
     this.playersService.updatePlayer(id, playerName);
+  }
+
+  handleFabClick() {
+    this.fabActivated = !this.fabActivated;
+    this.readOnly = !this.readOnly;
   }
 }
