@@ -41,7 +41,7 @@ export class Tab2Page implements OnInit {
     const toast = await this.toastController.create({
       message: this.fabActivated ? 'Editing Players' : 'Saved Players',
       duration: 1000,
-      color: this.fabActivated ? 'primary' : 'success',
+      color: this.fabActivated ? 'tertiary' : 'success',
       keyboardClose: this.fabActivated ? false : true,
       position: 'middle'
     });
