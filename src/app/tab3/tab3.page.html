@@ -29,7 +29,7 @@
       <ion-col>
         Yardage
         <ion-row *ngFor="let hole of this.course.holes; index as i">
-          {{ hole.teeBoxes[i].yards | json }}
+          {{ hole.teeBoxes[0].yards | json }}
         </ion-row>
       </ion-col>
       <ion-col>
