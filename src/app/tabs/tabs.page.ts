@@ -18,6 +18,5 @@ export class TabsPage implements OnInit, DoCheck {
     this.courseService
       .getCourseSelected()
       .subscribe(course => (this.courseSelected = course));
-    console.log(this.courseSelected);
   }
 }

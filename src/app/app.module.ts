@@ -12,7 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TeeTypesPipe } from './tee-types.pipe';
 
 @NgModule({
-  declarations: [AppComponent, PlayersPipe, PlayerComponent, TeeTypesPipe],
+  declarations: [AppComponent, PlayersPipe, PlayerComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [

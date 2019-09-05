@@ -11,15 +11,15 @@
     <ion-label>Tee Type</ion-label>
     <ion-select [(ngModel)]="teeType">
       <ion-select-option
-        *ngFor="let type of this.course.holes[0].teeBoxes"
-        [value]="type.teeType"
-        >{{ type.teeType }}
+        *ngFor="let teeBox of this.course.holes[0].teeBoxes | teeTypes"
+        [value]="teeBox.teeType"
+        >{{ teeBox.teeType }}
       </ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-grid>
-    <ion-row>
+    <ion-row *ngIf="teeType">
       <ion-col>
         Hole
         <ion-row *ngFor="let hole of this.course.holes">
