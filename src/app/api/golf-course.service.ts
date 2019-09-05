@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class GolfCourseService {
   private selectedCourse: Course;
-  private courseSelected: boolean;
+  private courseSelected: boolean = false;
   constructor() {}
   API_URL = 'https://golf-courses-api.herokuapp.com';
 
@@ -31,5 +31,8 @@ export class GolfCourseService {
   setSelectedCourse(course: Course) {
     this.selectedCourse = course;
     this.courseSelected = true;
+    this.getCourseSelected().subscribe(res => {
+      console.log(res);
+    });
   }
 }
