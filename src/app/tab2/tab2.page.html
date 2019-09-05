@@ -5,41 +5,57 @@
 </ion-header>
 
 <ion-content>
-  <ion-text color="primary">
-    <h1>Add Players</h1>
-  </ion-text>
-  <ion-item>
-    <ion-label position="floating">Player Name</ion-label>
-    <ion-input [(ngModel)]="currentPlayer"></ion-input>
-  </ion-item>
-  <ion-button (click)="addPlayer()" expand="block">
-    <ion-text>Add Player</ion-text>
-  </ion-button>
-
-  <ion-item *ngFor="let player of this.playersService.getPlayers()">
-    <ion-item>
-      <ion-input
-        [readonly]="readOnly"
-        [clearOnEdit]="readOnly"
-        (ionChange)="updatePlayer(player.id, $event.detail.value)"
-        [value]="player.name"
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col
+        sizeXl="6"
+        offsetXl="3"
+        sizeLg="6"
+        offsetLg="3"
+        sizeMd="6"
+        offsetMd="3"
+        sizeSm="12"
+        sizeXs="12"
       >
-      </ion-input>
-    </ion-item>
-    <ion-button (click)="removePlayer(player.name)">
-      <ion-icon name="remove"></ion-icon>
-    </ion-button>
-  </ion-item>
-  <ion-fab
-    vertical="bottom"
-    [activated]="fabActivated"
-    (click)="handleFabClick()"
-  >
-    <ion-fab-button>
-      <ion-icon name="create"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-button router-direction="forward" (click)="handleScorecardClick()">
-    Scorecard<ion-icon name="arrow-forward"></ion-icon>
-  </ion-button>
+        <ion-text color="primary">
+          <h1>Add Players</h1>
+        </ion-text>
+        <ion-item>
+          <ion-label position="floating">Player Name</ion-label>
+          <ion-input [(ngModel)]="currentPlayer"></ion-input>
+        </ion-item>
+        <ion-button (click)="addPlayer()" expand="block">
+          <ion-text>Add Player</ion-text>
+        </ion-button>
+        <ion-item *ngFor="let player of this.playersService.getPlayers()">
+          <ion-item>
+            <ion-input
+              [readonly]="readOnly"
+              [clearOnEdit]="readOnly"
+              (ionChange)="updatePlayer(player.id, $event.detail.value)"
+              [value]="player.name"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-button (click)="removePlayer(player.name)">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-button router-direction="forward" (click)="handleScorecardClick()">
+          Scorecard<ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-fab
+        vertical="bottom"
+        horizontal="center"
+        [activated]="fabActivated"
+        (click)="handleFabClick()"
+      >
+        <ion-fab-button>
+          <ion-icon name="create"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-row>
+  </ion-grid>
 </ion-content>
