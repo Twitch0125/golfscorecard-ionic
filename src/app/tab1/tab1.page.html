@@ -7,18 +7,33 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="courses">
-    <ion-card
-      color="Primary"
-      button="true"
-      *ngFor="let course of courses"
-      (click)="handleClick(course.id)"
-    >
-      <ion-card-header>
-        <ion-card-title>{{ course.name }}</ion-card-title>
-        <ion-card-subtitle>{{ course.id }}</ion-card-subtitle>
-      </ion-card-header>
-      <img [src]="course.image" />
-    </ion-card>
-  </div>
+  <ion-grid fixed="true">
+    <ion-row *ngIf="courses">
+      <ion-col
+        sizeXl="6"
+        offsetXl="3"
+        sizeLg="6"
+        offsetLg="3"
+        sizeMd="6"
+        offsetMd="3"
+        sizeSm="12"
+        sizeXs="12"
+      >
+        <div>
+          <ion-card
+            *ngFor="let course of courses"
+            color="Primary"
+            button="true"
+            (click)="handleClick(course.id)"
+          >
+            <ion-card-header>
+              <ion-card-title>{{ course.name }}</ion-card-title>
+              <ion-card-subtitle>{{ course.id }}</ion-card-subtitle>
+            </ion-card-header>
+            <img [src]="course.image" />
+          </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
