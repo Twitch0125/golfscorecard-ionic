@@ -1,20 +1,25 @@
 import { AjaxResponse, ajax } from 'rxjs/ajax';
+import { Observable, of } from 'rxjs';
 
 import { Course } from '../types/course';
 import { Courses } from '../types/courses';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GolfCourseService {
   private selectedCourse: Course;
+  private courseSelected: boolean;
   constructor() {}
   API_URL = 'https://golf-courses-api.herokuapp.com';
 
   getSelectedCourse(): Course {
     return this.selectedCourse;
+  }
+
+  getCourseSelected(): Observable<boolean> {
+    return of(this.courseSelected);
   }
 
   getCourses(): Observable<AjaxResponse> {
@@ -25,5 +30,6 @@ export class GolfCourseService {
   }
   setSelectedCourse(course: Course) {
     this.selectedCourse = course;
+    this.courseSelected = true;
   }
 }
