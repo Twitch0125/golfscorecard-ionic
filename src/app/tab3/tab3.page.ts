@@ -12,7 +12,7 @@ import { TeeType } from '../types/tee-type.enum';
 export class Tab3Page implements OnInit {
   course: Course;
   teeType: TeeType;
-
+  teeTypeId: TeeType;
   constructor(private courseService: GolfCourseService) {}
   ngOnInit() {
     this.course = this.courseService.getSelectedCourse();

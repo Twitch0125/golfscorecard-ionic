@@ -22,6 +22,8 @@
     <ion-row *ngIf="teeType">
       <ion-col>
         Hole
+        <h3>selected Tee Type: {{ teeType }}</h3>
+
         <ion-row *ngFor="let hole of this.course.holes">
           {{ hole.hole }}
         </ion-row>
