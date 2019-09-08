@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../types/course';
 import { GolfCourseService } from '../api/golf-course.service';
 import { Hole } from '../types/hole';
+import { Player } from '../types/player';
+import { PlayersService } from '../shared/players.service';
 import { TeeBox } from '../types/tee-box';
 import { TeeType } from '../types/tee-type.enum';
 
@@ -16,10 +18,17 @@ export class Tab3Page implements OnInit {
   teeType: TeeType;
   teeTypeId: number;
   holes: Hole[];
-  constructor(private courseService: GolfCourseService) {}
+  players: Player[];
+
+  constructor(
+    private courseService: GolfCourseService,
+    private playersService: PlayersService
+  ) {}
   ngOnInit() {
     this.course = this.courseService.getSelectedCourse();
-    console.log(this.course);
+    console.log('selected course', this.course);
+    this.players = this.playersService.getPlayers();
+    console.log('players', this.players);
   }
 
   setScoreCard() {

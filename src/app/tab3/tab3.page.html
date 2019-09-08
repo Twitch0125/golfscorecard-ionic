@@ -18,26 +18,74 @@
     </ion-select>
   </ion-item>
 
-  <ion-grid>
-    <ion-row *ngIf="teeType">
-      <ion-col>
-        Hole
-        <ion-row *ngFor="let hole of this.course.holes">
-          {{ hole.hole }}
-        </ion-row>
-      </ion-col>
-      <ion-col>
-        Yardage
-        <ion-row *ngFor="let hole of this.holes">
-          {{ hole.teeBoxes[0].yards | json }}
-        </ion-row>
-      </ion-col>
-      <ion-col>
-        Handicap
-      </ion-col>
-      <ion-col>
-        Par
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div *ngIf="teeType">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Hole
+          <ion-row *ngFor="let hole of this.course.holes">
+            {{ hole.hole }}
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          Yardage
+          <ion-row *ngFor="let hole of this.holes">
+            {{ hole.teeBoxes[0].yards | json }}
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          Handicap
+          <ion-row *ngFor="let hole of this.holes">
+            {{ hole.teeBoxes[0].hcp | json }}
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          Par
+          <ion-row *ngFor="let hole of this.holes">
+            {{ hole.teeBoxes[0].par | json }}
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid style="overflow:auto">
+      <ion-row>
+        <ion-col>
+          Hole
+          <ion-row *ngFor="let hole of this.course.holes">
+            <ion-col>
+              {{ hole.hole }}
+            </ion-col>
+            <ion-col *ngFor="let player of this.players">
+              <ion-input></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col *ngFor="let player of this.players">
+          {{ player.name }}'s score
+          <!-- <ion-row *ngFor="let hole of this.course.holes">
+            <ion-col>
+              <ion-input type="number" placeholder="score..."> </ion-input>
+            </ion-col>
+          </ion-row> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          totals
+          <ion-row>
+            <ion-col *ngFor="let player of this.players" class="ion-text-start"
+              >{{ player.name }}'s total
+              <ion-row>
+                0
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
