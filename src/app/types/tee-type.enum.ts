@@ -1,6 +1,6 @@
 export enum TeeType {
-  pro = 1,
-  champion,
-  men,
-  women
+  pro = 'pro',
+  champion = 'champion',
+  men = 'men',
+  women = 'women'
 }
