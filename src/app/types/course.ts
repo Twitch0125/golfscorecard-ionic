@@ -6,4 +6,5 @@ export interface Course {
   holeCount?: number;
   holes: Hole[];
   website?: string;
+  name: string;
 }

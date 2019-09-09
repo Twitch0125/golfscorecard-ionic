@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Course } from '../types/course';
+import { DatabaseService } from '../shared/database.service';
 import { GolfCourseService } from '../api/golf-course.service';
 import { Hole } from '../types/hole';
 import { Player } from '../types/player';
@@ -21,7 +23,8 @@ export class Tab3Page implements OnInit {
 
   constructor(
     private courseService: GolfCourseService,
-    private playersService: PlayersService
+    private playersService: PlayersService,
+    private firebase: DatabaseService
   ) {}
   ngOnInit() {
     this.course = this.courseService.getSelectedCourse();
@@ -77,5 +80,11 @@ export class Tab3Page implements OnInit {
     );
   }
 
-  saveGame() {}
+  saveGame() {
+    this.firebase.addGameDocument({
+      course: this.courseService.getSelectedCourse(),
+      players: this.playersService.getPlayers(),
+      teeType: this.teeType
+    });
+  }
 }

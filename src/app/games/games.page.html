@@ -6,4 +6,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-list-header>Saved Games:</ion-list-header>
+    <ion-item (click)="handleClick(game)" *ngFor="let game of games | async">
+      {{ game.players[0].name }}- {{ game.course.name }} - {{ game.teeType }}
+    </ion-item>
+  </ion-list>
+</ion-content>
