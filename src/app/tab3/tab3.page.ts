@@ -76,4 +76,6 @@ export class Tab3Page implements OnInit {
       )
     );
   }
+
+  saveGame() {}
 }
