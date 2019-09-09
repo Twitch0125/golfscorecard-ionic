@@ -1,3 +1,4 @@
+import { AddScoresPipe } from '../add-scores.pipe';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -13,6 +14,6 @@ import { TeeTypesPipe } from '../tee-types.pipe';
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }])
   ],
-  declarations: [Tab3Page, TeeTypesPipe]
+  declarations: [Tab3Page, TeeTypesPipe, AddScoresPipe]
 })
 export class Tab3PageModule {}

@@ -1,5 +1,6 @@
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
+import { AddScoresPipe } from './add-scores.pipe';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';

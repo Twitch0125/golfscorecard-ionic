@@ -25,7 +25,11 @@ export class Tab2Page implements OnInit {
 
   ngOnInit(): void {}
   addPlayer() {
-    this.playersService.addPlayer({ name: this.currentPlayer, id: uuid() });
+    this.playersService.addPlayer({
+      name: this.currentPlayer,
+      id: uuid(),
+      scores: [0]
+    });
   }
   removePlayer(name: string) {
     this.playersService.removePlayer(name);

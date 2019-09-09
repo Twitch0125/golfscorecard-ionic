@@ -29,7 +29,11 @@ export class PlayersService {
   getPlayers(): Player[] {
     return this.players;
   }
-
+  updatePlayerScore(player: Player, scores: number[]) {
+    let newArr: Player[] = [...this.players];
+    newArr[newArr.indexOf(player)].scores = scores;
+    this.players = [...newArr];
+  }
   updatePlayer(id: string, playerData: string) {
     this.players.map(player => {
       if (player.id === id) {

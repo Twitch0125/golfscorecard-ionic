@@ -16,7 +16,6 @@ import { TeeType } from '../types/tee-type.enum';
 export class Tab3Page implements OnInit {
   course: Course;
   teeType: TeeType;
-  teeTypeId: number;
   holes: Hole[];
   players: Player[];
 
@@ -37,37 +36,44 @@ export class Tab3Page implements OnInit {
     console.log('this.course setScoreCard()', this.course);
     this.course = this.courseService.getSelectedCourse();
 
-    switch (this.teeType) {
-      case 'pro':
-        this.teeTypeId = 1;
-        logType();
-        break;
-      case 'champion':
-        this.teeTypeId = 2;
-        logType();
-        break;
-      case 'men':
-        this.teeTypeId = 3;
-        logType();
-        break;
-      case 'women':
-        this.teeTypeId = 4;
-        logType();
-        break;
-    }
-
-    this.holes = this.course.holes.map((hole, index) => {
-      for (let i = 0; i < hole.teeBoxes.length; i++) {
+    this.holes = this.course.holes.map((currentHole, index) => {
+      for (let i = 0; i < currentHole.teeBoxes.length; i++) {
         console.log(this.teeType);
 
-        if (hole.teeBoxes[i].teeType === this.teeType) {
+        if (currentHole.teeBoxes[i].teeType === this.teeType) {
           let newTeeBoxes: TeeBox[] = [];
-          newTeeBoxes.push(hole.teeBoxes[i]);
-          hole.teeBoxes = newTeeBoxes;
+          newTeeBoxes.push(currentHole.teeBoxes[i]);
+          currentHole.teeBoxes = newTeeBoxes;
         }
       }
-      return hole;
+      return currentHole;
     });
     console.log('this.holes', this.holes);
+  }
+
+  addScore(player: Player, index: number, score: any) {
+    console.log('player', player, 'score: ', score, 'index: ', index);
+    console.log('score', score);
+    let numScore;
+    if (!score) {
+      numScore = 0;
+    } else {
+      numScore = parseInt(score);
+    }
+
+    player.scores[index] = numScore;
+
+    console.log(player.scores);
+
+    console.log('adding score', score);
+
+    this.playersService.updatePlayerScore(player, player.scores);
+
+    console.log(this.players);
+    console.log(
+      this.players[0].scores.reduce(
+        (accumulator, currentValue) => accumulator + currentValue
+      )
+    );
   }
 }

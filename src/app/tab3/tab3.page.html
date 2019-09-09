@@ -13,11 +13,12 @@
       <ion-select-option
         *ngFor="let teeBox of this.course.holes[0].teeBoxes | teeTypes"
         [value]="teeBox.teeType"
-        >{{ teeBox.teeType }}
+        >{{ teeBox.teeType | titlecase }}
       </ion-select-option>
     </ion-select>
   </ion-item>
 
+  <!-- course details -->
   <div *ngIf="teeType">
     <ion-grid>
       <ion-row>
@@ -48,30 +49,32 @@
       </ion-row>
     </ion-grid>
 
+    <!-- scores -->
     <ion-grid style="overflow:auto">
       <ion-row>
         <ion-col>
-          Hole
-          <ion-row *ngFor="let hole of this.course.holes">
-            <ion-col>
-              {{ hole.hole }}
-            </ion-col>
-            <ion-col *ngFor="let player of this.players">
-              <ion-input></ion-input>
-            </ion-col>
-          </ion-row>
+          Holes
         </ion-col>
         <ion-col *ngFor="let player of this.players">
           {{ player.name }}'s score
-          <!-- <ion-row *ngFor="let hole of this.course.holes">
-            <ion-col>
-              <ion-input type="number" placeholder="score..."> </ion-input>
-            </ion-col>
-          </ion-row> -->
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let hole of this.course.holes; index as i">
+        <ion-col>
+          {{ hole.hole }}
+        </ion-col>
+        <ion-col *ngFor="let player of this.players">
+          <ion-input
+            #scorebox
+            (ionChange)="addScore(player, i, scorebox.value)"
+            type="number"
+            placeholder="score"
+          ></ion-input>
         </ion-col>
       </ion-row>
     </ion-grid>
 
+    <!-- Totals -->
     <ion-grid>
       <ion-row>
         <ion-col class="ion-text-center">
@@ -80,7 +83,7 @@
             <ion-col *ngFor="let player of this.players" class="ion-text-start"
               >{{ player.name }}'s total
               <ion-row>
-                0
+                {{ player.scores | addScores }}
               </ion-row>
             </ion-col>
           </ion-row>
