@@ -14,7 +14,11 @@
 <ion-content>
   <ion-item>
     <ion-label>Tee Type</ion-label>
-    <ion-select (ionChange)="setScoreCard()" [(ngModel)]="teeType">
+    <ion-select
+      (ionChange)="setScoreCard()"
+      [(ngModel)]="teeType"
+      value="{{ this.teeType }}"
+      >{{ this.teeType }}
       <ion-select-option
         *ngFor="let teeBox of this.course.holes[0].teeBoxes | teeTypes"
         [value]="teeBox.teeType"
@@ -74,6 +78,7 @@
             (ionChange)="addScore(player, i, scorebox.value)"
             type="number"
             placeholder="score"
+            value="{{ player.scores[i] }}"
           ></ion-input>
         </ion-col>
       </ion-row>
